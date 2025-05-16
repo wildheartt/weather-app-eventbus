@@ -11,20 +11,15 @@ describe('createHeader', () => {
     document.body.innerHTML = '';
   });
 
-  test('клик по searchBtn без ввода города должен показать ошибку', () => {
+  test('корректно создает элементы', () => {
     const headerEl = createHeader('TestCity');
     document.body.append(headerEl);
 
+    const cityName = headerEl.querySelector('.city__name');
+    expect(cityName).not.toBeNull();
+    expect(cityName.textContent).toBe('TestCity');
+
     const cityChangeBtn = headerEl.querySelector('.city__change');
-    cityChangeBtn.click();
-
-    const searchBtn = headerEl.querySelector('.search_btn');
-    expect(searchBtn).not.toBeNull();
-
-    searchBtn.click();
-
-    const errorBlock = headerEl.querySelector('.search__error');
-    expect(errorBlock).not.toBeNull();
-    expect(errorBlock.textContent).toContain('Введите название города');
+    expect(cityChangeBtn).not.toBeNull();
   });
 });

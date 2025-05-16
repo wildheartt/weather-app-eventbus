@@ -1,4 +1,3 @@
-
 import { getWeatherData } from '../api.js';
 
 global.fetch = jest.fn(() =>
@@ -14,10 +13,8 @@ describe('getWeatherData', () => {
   });
 
   test('должен обработать ошибку fetch (и вывести в консоль)', async () => {
-
     global.fetch.mockImplementationOnce(() => Promise.reject('API error'));
 
-   
     const consoleSpy = jest
       .spyOn(console, 'error')
       .mockImplementation(() => {});

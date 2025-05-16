@@ -1,7 +1,7 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "homepage": "https://wildheartt.github.io/weather",
+  "homepage": "https://github.com/wildheartt/weather-app-eventbus",
   "scripts": {
     "dev": "webpack serve --mode development --open",
     "build": "webpack --mode production",

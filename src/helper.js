@@ -41,10 +41,27 @@ export const fToC = (fahrenheit) => {
   return ((fahrenheit - 32) * 5) / 9;
 };
 
-export const resetWeatherContent = (city, weather) => {
-  localStorage.setItem('city', JSON.stringify(city));
-  document.body.innerHTML = '';
-  const header = createHeader(city);
-  const content = createContent(weather);
-  document.body.append(header, content);
-};
+export class EventBus {
+  constructor() {
+    this.events = {};
+  }
+
+  on(event, listener) {
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+    this.events[event].push(listener);
+  }
+
+  off(event, listener) {
+    if (!this.events[event]) return;
+    this.events[event] = this.events[event].filter((l) => l !== listener);
+  }
+
+  emit(event, data) {
+    if (!this.events[event]) return;
+    this.events[event].forEach((listener) => listener(data));
+  }
+}
+
+export const eventBus = new EventBus();
