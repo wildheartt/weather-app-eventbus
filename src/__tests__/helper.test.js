@@ -3,11 +3,7 @@ import {
   capitalizeFirstLetter,
   cToF,
   fToC,
-  resetWeatherContent,
 } from '../helper.js';
-
-import * as appHeader from '../appHeader.js';
-import * as appContent from '../appContent.js';
 
 describe('helper.js', () => {
   beforeEach(() => {

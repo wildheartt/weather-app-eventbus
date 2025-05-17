@@ -1,6 +1,3 @@
-import { createContent } from './appContent.js';
-import { createHeader } from './appHeader.js';
-
 export const directionOfwWind = (degree) => {
   if (degree > 337.5) {
     return 'северный';

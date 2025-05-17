@@ -3,8 +3,18 @@ import pluginJs from '@eslint/js';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { languageOptions: { globals: globals.browser } },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.commonjs,
+        ...globals.es2021,
+      },
+    },
+  },
   pluginJs.configs.recommended,
+
   {
     ignores: [
       'dist',
@@ -14,5 +24,15 @@ export default [
       'stylelint.config.cjs',
       '.github',
     ],
+  },
+
+  {
+    files: ['**/__tests__/**/*.js', '**/*.test.js'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {},
   },
 ];

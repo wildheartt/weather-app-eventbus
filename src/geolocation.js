@@ -1,4 +1,3 @@
-import { getWeatherData } from './api.js';
 import { eventBus } from './helper.js';
 
 export const handleWeatherByGeolocation = () => {
@@ -15,7 +14,6 @@ export const handleWeatherByGeolocation = () => {
     );
     const result = await response.json();
 
-    const weather = await getWeatherData(result.features[0].properties.city);
     eventBus.emit('searchCity', result.features[0].properties.city);
     console.log(result);
   };

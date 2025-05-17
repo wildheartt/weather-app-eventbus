@@ -1,6 +1,6 @@
 import { getWeatherData } from './api.js';
 import { createContent } from './appContent.js';
-import { createHeader, createSearchForm } from './appHeader.js';
+import { createHeader } from './appHeader.js';
 import { eventBus } from './helper.js';
 import '../css/styles.css';
 

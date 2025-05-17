@@ -1,4 +1,3 @@
-import { getWeatherData } from './api.js';
 import { handleWeatherByGeolocation } from './geolocation.js';
 import { cToF, fToC } from './helper.js';
 import { eventBus } from './helper.js';
@@ -92,9 +91,7 @@ export const createHeader = (city) => {
   });
 
   window.addEventListener('click', (e) => {
-    if (
-      e.target == cityChange
-    ) {
+    if (e.target == cityChange) {
       return;
     } else {
       headerCity.innerHTML = '';

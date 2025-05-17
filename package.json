@@ -18,6 +18,7 @@
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^28.11.0",
     "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
     "husky": "^8.0.0",
