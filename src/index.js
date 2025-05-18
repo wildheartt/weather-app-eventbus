@@ -34,11 +34,13 @@ const createHistoryBlock = () => {
 };
 
 const renderApp = (city, weather) => {
-  document.body.innerHTML = '';
+  const root = document.getElementById('root');
+  if (!root) return;
+  root.innerHTML = '';
   const header = createHeader(city);
   const history = createHistoryBlock();
   const content = createContent(weather);
-  document.body.append(header, history, content);
+  root.append(header, history, content);
 };
 
 const addToHistory = (city) => {
