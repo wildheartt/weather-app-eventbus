@@ -19,14 +19,22 @@ const createHistoryBlock = () => {
       const li = document.createElement('li');
       li.textContent = city;
       li.classList.add('history-item');
-      li.addEventListener('click', () => {
-        eventBus.emit('historySelect', city);
+      li.addEventListener('click', async () => {
+        try {
+          const weather = await getWeatherData(city);
+          if (weather && !weather.message) {
+            localStorage.setItem('city', JSON.stringify(weather.name));
+            addToHistory(weather.name);
+            renderApp(weather.name, weather);
+          }
+        } catch (err) {
+          console.error(err);
+        }
       });
       list.appendChild(li);
     });
   };
 
-  eventBus.on('historyChanged', updateHistory);
   updateHistory();
 
   historyBlock.append(title, list);
@@ -49,7 +57,6 @@ const addToHistory = (city) => {
   history.unshift(city);
   if (history.length > 10) history = history.slice(0, 10);
   localStorage.setItem('history', JSON.stringify(history));
-  eventBus.emit('historyChanged');
 };
 
 const app = async () => {
