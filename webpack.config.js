@@ -1,12 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: './',
+    publicPath: isProd ? './' : '/',
   },
   mode: 'development',
   devServer: {
@@ -17,6 +19,13 @@ module.exports = {
     port: 8080,
     historyApiFallback: true,
     open: true,
+    client: {
+      webSocketURL: {
+        hostname: 'localhost',
+        port: 8080,
+        pathname: '/ws',
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
